@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://googleapis.com" rel="stylesheet">
     <meta charset="UTF-8">
     <title>Daily Sparkle 🌟</title>
     <style>
@@ -22,7 +23,9 @@
             text-align: center;
             max-width: 400px;
         }
-        h1 { color: #ff6b81; }
+        h1 { color: #ff6b81;
+           font-family: 'Playfair Display', serif;
+    font-weight: 700;}
         p { font-size: 1.2rem; color: #4b4b4b; min-height: 50px; }
         button {
             background-color: #ff6b81;
@@ -47,10 +50,10 @@
 
     <script>
        const compliments = [
-            "You are doing great, keep going! 🌟",
+            "You are doing amazing! 🌟",
             "Your smile makes the world a little brighter. 💕",
             "You are much stronger than you think you are. 💪",
-            "The world is lucky to have you in it! 🌍",
+            "I am so proud of you🌍",
             "You bring wonderful energy wherever you go. 🌸",
             "You are entirely up to par! 🐹",
             "An absolute gem of a human being. 💎"
@@ -62,5 +65,44 @@
             textElement.innerText = compliments[randomIndex];
         }
     </script>
+
+    <script>
+        function createFlower() {
+            const flower = document.createElement('div');
+            // Choose random cute pastel flowers 🌸 💮 🏵️ 🌼
+            const flowers = ['🌸', '💮', '🏵️', '🌼'];
+            flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
+            
+            // Randomize position, size, and fall speed
+            flower.style.position = 'fixed';
+            flower.style.top = '-20px';
+            flower.style.left = Math.random() * 100 + 'vw';
+            flower.style.fontSize = (Math.random() * 10 + 15) + 'px';
+            flower.style.pointerEvents = 'none'; // Prevents blocking button clicks
+            flower.style.zIndex = '0'; // Keeps flowers behind the card
+            
+            // Smooth falling animation using CSS
+            const duration = Math.random() * 3 + 4; // 4 to 7 seconds
+            flower.style.transition = `transform ${duration}s linear, opacity ${duration}s linear`;
+            
+            document.body.appendChild(flower);
+
+            // Start the fall animation right after creating the flower
+            setTimeout(() => {
+                flower.style.transform = `translateY(105vh) rotate(${Math.random() * 360}deg)`;
+                flower.style.opacity = '0';
+            }, 100);
+
+            // Clean up the flower element once it hits the bottom
+            setTimeout(() => {
+                flower.remove();
+            }, duration * 1000);
+        }
+
+        // Spawn a new flower every 400 milliseconds
+        setInterval(createFlower, 400);
+    </script>
+
     </body>
+    
 </html>
