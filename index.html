@@ -14,6 +14,7 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
+            overflow: hidden; /* Stops scrollbars from flickering during flower falls */
             }
         .card {
             background: #ffffff;
@@ -22,7 +23,8 @@
             box-shadow: 0 8px 16px rgba(0,0,0,0.05);
             text-align: center;
             max-width: 400px;
-            z-index: 2;
+            position: relative; /* Fixed: Required so z-index works correctly */
+            z-index: 10; /* Fixed: Keeps the card safely on layer 10, in front of the flowers */
         }
         h1 { color: #ff6b81;
            font-family: 'Playfair Display', serif;
@@ -38,6 +40,8 @@
             border-radius: 25px;
             cursor: pointer;
             transition: 0.2s;
+            position: relative; /* Fixed: Ensures button tracking works on top layers */
+            z-index: 11; /* Fixed: Makes absolutely sure it is clickable */
         }
       button:hover { background-color: #ff4757; transform: scale(1.05); }
     </style>
@@ -58,9 +62,9 @@
             "I am so proud of you🌍",
             "You bring wonderful energy wherever you go. 🌸",
             "You light up the room. 🐹",
-            "An absolute gem of a human being. 💎"
-           "Your energy is like sunshine on a rainy day. 💕"
-            "Your laugh is my favorite sound. 🌟"
+            "An absolute gem of a human being. 💎",
+           "Your energy is like sunshine on a rainy day. 💕",
+            "Your laugh is my favorite sound. 🌟",
 
         ];
 
@@ -84,7 +88,7 @@
             flower.style.left = Math.random() * 100 + 'vw';
             flower.style.fontSize = (Math.random() * 10 + 15) + 'px';
             flower.style.pointerEvents = 'none'; // Prevents blocking button clicks
-            flower.style.zIndex = '-1'; // Keeps flowers behind the card
+            flower.style.zIndex = '1'; // Keeps flowers behind the card
             
             // Smooth falling animation using CSS
             const duration = Math.random() * 3 + 4; // 4 to 7 seconds
