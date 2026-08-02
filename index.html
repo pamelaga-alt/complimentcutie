@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Daily Sparkle 🌟</title>
+    <style>
+        body {
+            background-color: #fff0f5; /* Pastel pink */
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+            text-align: center;
+            max-width: 400px;
+        }
+        h1 { color: #ff6b81; }
+        p { font-size: 1.2rem; color: #4b4b4b; min-height: 50px; }
+        button {
+            background-color: #ff6b81;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+      button:hover { background-color: #ff4757; transform: scale(1.05); }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>✨ For You ✨</h1>
+        <p id="compliment">Click the button for a little boost!</p>
+        <button onclick="getCompliment()">Click Me! ✨</button>
+    </div>
+
+    <script>
+       const compliments = [
+            "You are doing great, keep going! 🌟",
+            "Your smile makes the world a little brighter. 💕",
+            "You are much stronger than you think you are. 💪",
+            "The world is lucky to have you in it! 🌍",
+            "You bring wonderful energy wherever you go. 🌸",
+            "You are entirely up to par! 🐹",
+            "An absolute gem of a human being. 💎"
+        ];
+
+        function getCompliment() {
+            const textElement = document.getElementById("compliment");
+            const randomIndex = Math.floor(Math.random() * compliments.length);
+            textElement.innerText = compliments[randomIndex];
+        }
+    </script>
+    </body>
+</html>
