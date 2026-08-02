@@ -16,12 +16,13 @@
             margin: 0;
             }
         .card {
-            background: white;
+            background: #ffffff;
             padding: 30px;
             border-radius: 20px;
             box-shadow: 0 8px 16px rgba(0,0,0,0.05);
             text-align: center;
             max-width: 400px;
+            z-index: 2;
         }
         h1 { color: #ff6b81;
            font-family: 'Playfair Display', serif;
@@ -33,6 +34,7 @@
             border: none;
             padding: 12px 24px;
             font-size: 1rem;
+            font-family: 'Playfair Display', serif;
             border-radius: 25px;
             cursor: pointer;
             transition: 0.2s;
@@ -43,8 +45,8 @@
 <body>
 
     <div class="card">
-        <h1>✨ For You ✨</h1>
-        <p id="compliment">Click the button for a little boost!</p>
+        <h1>✨ Daily Affirmations ✨</h1>
+        <p id="compliment"> Here's a little pick me up!</p>
         <button onclick="getCompliment()">Click Me! ✨</button>
     </div>
 
@@ -55,8 +57,11 @@
             "You are much stronger than you think you are. 💪",
             "I am so proud of you🌍",
             "You bring wonderful energy wherever you go. 🌸",
-            "You are entirely up to par! 🐹",
+            "You light up the room. 🐹",
             "An absolute gem of a human being. 💎"
+           "Your energy is like sunshine on a rainy day. 💕"
+            "Your laugh is my favorite sound. 🌟"
+
         ];
 
         function getCompliment() {
@@ -79,7 +84,7 @@
             flower.style.left = Math.random() * 100 + 'vw';
             flower.style.fontSize = (Math.random() * 10 + 15) + 'px';
             flower.style.pointerEvents = 'none'; // Prevents blocking button clicks
-            flower.style.zIndex = '0'; // Keeps flowers behind the card
+            flower.style.zIndex = '-1'; // Keeps flowers behind the card
             
             // Smooth falling animation using CSS
             const duration = Math.random() * 3 + 4; // 4 to 7 seconds
